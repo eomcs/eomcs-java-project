@@ -53,7 +53,6 @@
 
 ## 실습 결과
 
-- src/main/java/com/eomcs/pms/handler/BoardList.java 추가
 - src/main/java/com/eomcs/pms/handler/BoardHandler.java 변경
 - src/main/java/com/eomcs/pms/handler/BoardHandler2.java 삭제
 - src/main/java/com/eomcs/pms/handler/BoardHandler3.java 삭제
