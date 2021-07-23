@@ -158,7 +158,11 @@ public class TaskHandler {
   }
 
   private int promptStatus(int status) {
-    System.out.printf("상태%s?\n", status != -1 ? getStatusLabel(status) : "");
+    if (status == -1) {
+      System.out.println("상태?");
+    } else {
+      System.out.printf("상태(%s)?\n", getStatusLabel(status));
+    }
     System.out.println("0: 신규");
     System.out.println("1: 진행중");
     System.out.println("2: 완료");
