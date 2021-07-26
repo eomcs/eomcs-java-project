@@ -36,7 +36,7 @@
   - add(), list() 메서드 변경
 - com.eomcs.pms.App 클래스 변경
 
-### 2단계 - MemberHandler, ProjectHandler, TaskHandler 클래스도 BoardHandler처럼 패키지 멤버 클래스와 인스턴스 필드, 인스턴스 메서드를 적용한다.
+### 2단계 - MemberHandler, ProjectHandler, TaskHandler 클래스도 BoardHandler처럼 인스턴스 메서드로 전환한다.
 
 당장은 한 개의 목록을 유지하면 되지만,
 나중에 여러 개의 목록을 유지할 경우를 대비해서
