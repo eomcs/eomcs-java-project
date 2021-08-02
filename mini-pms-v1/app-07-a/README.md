@@ -44,7 +44,8 @@
 
 - com.eomcs.pms.handler.TaskHandler 클래스 변경
   - `MemberHandler` 객체를 저장할 인스턴스 필드를 선언한다.
-   - add()와 update() 메서드 변경
+  - add()와 update() 메서드 변경
+  - promptOwner() 메서드 변경
 - com.eomcs.pms.App 클래스 변경
   - TaskHandler의 memberHandler 변수에 의존 객체를 주입한다.
 
