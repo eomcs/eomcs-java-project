@@ -67,6 +67,7 @@
 ### 10-d. 리팩토링 : LinkedList를 직접 사용하기
 ### 10-e. 리팩토링 : Generalization + 다형성 + 의존 객체 주입(Dependecy Injection)
 ### 10-f. 리팩토링 : 메서드 이동
+### 10-g. 리팩토링 : 인터페이스 적용
 
 ### 10. 멤버의 접근 제어 다루기 : 세터(setter)와 게터(getter)
 
