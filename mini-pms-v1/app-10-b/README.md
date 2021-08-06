@@ -1,4 +1,4 @@
-# 10-b. 상속 활용 : Generalization II
+# 10-b. 리팩토링 : Generalization II
 
 이번 훈련에서는 서브 클래스들의 공통 필드와 메서드를 추출하여 수퍼 클래스로 정의하는 것을 연습한다.
 
