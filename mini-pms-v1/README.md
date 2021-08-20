@@ -72,19 +72,8 @@
 ### 10-i. 리팩토링 : 추상 클래스 적용
 
 ### 11-a. 자료 구조 다루기 : 스택 구현과 사용
-### 11-b. 자료 구조 다루기 : 리팩토링 - 클래스 이동
-### 11-c. 자료 구조 다루기 : 제네릭 적용
-
-### 13-a. `Iterator` 디자인 패턴 : 데이터 조회 기능을 캡슐화
-### 13-b. `Iterator` 디자인 패턴 : XxxIterator 에 대해 Generalization 수행
-### 13-c. `Iterator` 디자인 패턴 : Iterator 패턴에 인터페이스 문법 적용
-### 13-d. `Iterator` 디자인 패턴 : GRASP의 Creator 디자인 패턴 적용
-### 13-e. `Iterator` 디자인 패턴 : 스태틱 중첩 클래스(static nested class) 활용
-### 13-f. `Iterator` 디자인 패턴 : 논스태틱 중첩 클래스(inner class) 활용
-### 13-g. `Iterator` 디자인 패턴 : 로컬 클래스(local class) 활용
-### 13-h. `Iterator` 디자인 패턴 : 익명 클래스(anonymous class) 활용
-
-### 14. 제네릭이 필요한 이유와 사용법
+### 11-b. 자료 구조 다루기 : 리팩토링 - 클래스 및 패키지 이동
+### 11-c. 자료 구조 다루기 : 제네릭이 필요한 이유와 사용법
 
 ### 15. 자바 컬렉션 API 사용하기
 
