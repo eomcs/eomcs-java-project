@@ -86,8 +86,10 @@
 
 ### 14-a. `Command` 디자인 패턴 : 적용 전 문제점 확인
 ### 14-b. `Command` 디자인 패턴 : 메서드를 객체로 분리
-### 14-c. `Command` 디자인 패턴 : 인터페이스로 객체의 사용 규칙 통일
-### 14-d. `Command` 디자인 패턴 : `Map`으로 커맨드 객체 관리
+### 14-c. `Command` 디자인 패턴 : 리팩토링
+### 14-d. `Command` 디자인 패턴 : 기능 추가를 통해 커맨드 패턴의 유용성 확인 
+### 14-e. `Command` 디자인 패턴 : 인터페이스로 객체의 사용 규칙 통일
+### 14-f. `Command` 디자인 패턴 : `Map`으로 커맨드 객체 관리
 
 ### 18-a. 바이트 스트림 다루기 : 바이너리 형식의 데이터 입출력(FileInputStream/FileOutputStream)
 ### 18-b. 바이트 스트림 다루기 : 데코레이터 객체 활용(DataInputStream/DataOutputStream)
