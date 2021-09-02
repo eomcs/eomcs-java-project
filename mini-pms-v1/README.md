@@ -91,6 +91,8 @@
 ### 14-e. `Command` 디자인 패턴 : 인터페이스로 객체의 사용 규칙 통일
 ### 14-f. `Command` 디자인 패턴 : `Map`으로 커맨드 객체 관리
 
+### 15. 비트 연산자 활용: 메뉴 권한 관리
+
 ### 18-a. 바이트 스트림 다루기 : 바이너리 형식의 데이터 입출력(FileInputStream/FileOutputStream)
 ### 18-b. 바이트 스트림 다루기 : 데코레이터 객체 활용(DataInputStream/DataOutputStream)
 ### 18-c. 바이트 스트림 다루기 : 버퍼 사용(BufferedInputStream/BufferedOutputStream)
