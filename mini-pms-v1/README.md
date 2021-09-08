@@ -93,10 +93,9 @@
 
 ### 15. 비트 연산자 활용: 메뉴 권한 관리
 
-### 18-a. 바이트 스트림 다루기 : 바이너리 형식의 데이터 입출력(FileInputStream/FileOutputStream)
-### 18-b. 바이트 스트림 다루기 : 데코레이터 객체 활용(DataInputStream/DataOutputStream)
-### 18-c. 바이트 스트림 다루기 : 버퍼 사용(BufferedInputStream/BufferedOutputStream)
-### 18-d. 바이트 스트림 다루기 : 객체 입출력(ObjectInputStream/ObjectOutputStream)
+### 16-a. 파일 입출력 다루기 : 바이너리 형식으로 데이터 입출력
+
+
 ### 18-e. 바이트 스트림 다루기 : 리팩터링 I
 
 ### 19-a. 문자 스트림 다루기 : 텍스트(CSV 파일 포맷) 입출력(FileReader/FileWriter)
