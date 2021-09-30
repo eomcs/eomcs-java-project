@@ -33,15 +33,15 @@
 JSON 데이터(UTF-8 문자열) CRLF  <== 명령어에 따라 선택 사항
 
 예) 게시글 목록 요청
-/board/list CRLF
+board.selectList CRLF
 CRLF
 
 예) 게시글 상세 요청
-/board/detail CRLF
+board.selectOne CRLF
 {"no": 1} CRLF
 
 예) 게시글 등록 요청
-/board/add CRLF
+board.insert CRLF
 {
     "title": "제목", 
     "content": "내용", 
@@ -51,7 +51,7 @@ CRLF
 } CRLF
 
 예) 게시글 변경 요청
-board/update CRLF
+board.update CRLF
 {
     "no": 1
     "title": "제목", 
@@ -59,7 +59,7 @@ board/update CRLF
 } CRLF
 
 예) 게시글 삭제 요청
-/board/delete CRLF
+board.delete CRLF
 {"no": 1} CRLF
 ```
 
@@ -71,12 +71,12 @@ board/update CRLF
 JSON 데이터(UTF-8 문자열) CRLF  <== 데이터가 없으면 빈 문자열을 응답한다.
 
 
-예) /board/list 요청에 대한 응답
+예) board.selectList 요청에 대한 응답
 success CRLF
 게시글 목록에 대한 JSON 데이터 CRLF
 
 
-예) board/detail 요청에 대한 응답
+예) board.selectOne 요청에 대한 응답
 success CRLF
 {
     "no": 1
@@ -90,15 +90,15 @@ success CRLF
     "like": 5
 } CRLF
 
-예) board/add 요청에 대한 응답
+예) board.insert 요청에 대한 응답
 success CRLF
 CRLF
 
-예) board/update 요청에 대한 응답
+예) board.update 요청에 대한 응답
 success CRLF
 CRLF
 
-예) board/delete 요청에 대한 응답
+예) board.delete 요청에 대한 응답
 success CRLF
 CRLF
 ```
