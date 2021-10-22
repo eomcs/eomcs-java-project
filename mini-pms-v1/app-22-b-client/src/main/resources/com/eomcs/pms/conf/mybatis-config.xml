@@ -23,7 +23,15 @@
   </environments>
   
   <mappers>
+<!-- 방법1:
+    <mapper resource="com/eomcs/pms/mapper/BoardMapper.xml"/>
+    <mapper resource="com/eomcs/pms/mapper/MemberMapper.xml"/>
+    <mapper resource="com/eomcs/pms/mapper/ProjectMapper.xml"/>
+    <mapper resource="com/eomcs/pms/mapper/TaskMapper.xml"/>
+-->
+<!-- 방법2: -->
     <package name="com.eomcs.pms.dao"/>
+    
   </mappers>
 </configuration>
 

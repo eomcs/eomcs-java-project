@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.pms.dao.TaskDao">
+  
+  <resultMap type="task" id="TaskMap">
+    <id column="task_no" property="no"/> 
+    <result column="project_no" property="projectNo"/>
+    <result column="content" property="content"/>
+    <result column="deadline" property="deadline"/>
+    
+    <association property="owner" javaType="member">
+	    <id column="owner_no" property="no"/>
+	    <result column="owner_name" property="name"/>
+	    <result column="owner_email" property="email"/>
+    </association>
+    
+    <association property="status" javaType="taskStatus">
+	    <id column="status_no" property="no"/>
+	    <result column="status_title" property="title"/>
+    </association>
+  </resultMap>
+  
+  <resultMap type="taskStatus" id="TaskStatusMap">
+    <id column="task_status_no" property="no"/>
+    <result column="title" property="title"/>
+  </resultMap>
+  
+  <sql id="select1">
+    select
+      t.task_no,
+      t.project_no,
+      t.content,
+      t.deadline,
+      m.member_no owner_no,
+      m.name owner_name,
+      m.email owner_email,
+      ts.task_status_no status_no,
+      ts.title status_title
+    from
+      pms_task t
+      inner join pms_member m on t.member_no=m.member_no
+      inner join pms_task_status ts on t.task_status_no=ts.task_status_no
+  </sql>
+  
+  <select id="findAll" resultMap="TaskMap" parameterType="int">
+    <include refid="select1"/>
+    where
+      t.project_no=#{projectNo}
+    order by
+      t.task_no asc
+  </select>
+
+  <select id="findByNo" resultMap="TaskMap" parameterType="int">
+    <include refid="select1"/>
+    where
+      t.task_no=#{taskNo}
+  </select>
+
+  <insert id="insert" parameterType="task">
+    insert into pms_task(project_no,member_no,content,deadline,task_status_no) 
+    values(#{projectNo},#{owner.no},#{content},#{deadline},#{status.no})
+  </insert>
+  
+  <select id="findAllStatus" resultMap="TaskStatusMap">
+    select 
+      task_status_no, 
+      title 
+    from 
+      pms_task_status 
+    order by 
+      task_status_no asc
+  </select>
+  
+  <update id="update" parameterType="task">
+    update pms_task set
+      content=#{content},
+      deadline=#{deadline},
+      task_status_no=#{status.no},
+      member_no=#{owner.no}
+    where task_no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from pms_task 
+    where task_no=#{taskNo}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
