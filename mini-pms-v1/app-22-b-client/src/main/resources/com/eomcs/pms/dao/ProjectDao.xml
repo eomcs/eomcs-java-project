@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.pms.dao.ProjectDao">
+  
+  <resultMap type="project" id="ProjectMap">
+    <id column="project_no" property="no"/> 
+    <result column="title" property="title"/>
+    <result column="content" property="content"/>
+    <result column="start_dt" property="startDate"/>
+    <result column="end_dt" property="endDate"/>
+    
+    <association property="owner" javaType="member">
+	    <id column="owner_no" property="no"/>
+	    <result column="owner_name" property="name"/>
+	    <result column="owner_email" property="email"/>
+    </association>
+    
+    <collection property="members" ofType="member">
+	    <id column="member_no" property="no"/>
+	    <result column="member_name" property="name"/>
+	    <result column="member_email" property="email"/>
+    </collection>
+  </resultMap>
+  
+  <select id="findAll" resultMap="ProjectMap">
+    select
+      p.project_no,
+      p.title,
+      p.start_dt,
+      p.end_dt,
+      m.member_no owner_no,
+      m.name owner_name,
+      m.email owner_email,
+      m2.member_no member_no,
+      m2.name member_name,
+      m2.email member_email
+    from
+      pms_project p
+      inner join pms_member m on p.member_no=m.member_no
+      left outer join pms_project_member pm on p.project_no=pm.project_no
+      inner join pms_member m2 on pm.member_no=m2.member_no
+    order by
+      project_no desc, m2.name asc
+  </select>
+
+  <select id="findByNo" resultMap="ProjectMap" parameterType="int">
+    select
+      p.project_no,
+      p.title,
+      p.content,
+      p.start_dt,
+      p.end_dt,
+      m.member_no owner_no,
+      m.name owner_name,
+      m.email owner_email,
+      m2.member_no member_no,
+      m2.name member_name,
+      m2.email member_email
+    from
+      pms_project p
+      inner join pms_member m on p.member_no=m.member_no
+      left outer join pms_project_member pm on p.project_no=pm.project_no
+      inner join pms_member m2 on pm.member_no=m2.member_no
+    where 
+      p.project_no=#{no}
+  </select>
+
+  <insert id="insert" parameterType="project" 
+          useGeneratedKeys="true" keyColumn="project_no" keyProperty="no">
+    insert into pms_project(title,content,start_dt,end_dt,member_no) 
+    values(#{title},#{content},#{startDate},#{endDate},#{owner.no})
+  </insert>
+
+  <insert id="insertMember">
+    insert into pms_project_member(project_no,member_no) 
+    values(#{param1},#{param2})
+  </insert>
+
+  <update id="update" parameterType="project">
+    update pms_project set
+      title=#{title},
+      content=#{content},
+      start_dt=#{startDate},
+      end_dt=#{endDate}
+    where project_no=#{no}
+  </update>
+  
+  <delete id="deleteMember" parameterType="int">
+    delete from pms_project_member 
+    where project_no=#{projectNo}
+  </delete>
+  
+  <delete id="delete" parameterType="int">
+    delete from pms_project 
+    where project_no=#{no}
+  </delete>
+  
+</mapper>
+
+
+
+
+
+
+
