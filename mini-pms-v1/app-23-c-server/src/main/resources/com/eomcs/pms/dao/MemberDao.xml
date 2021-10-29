@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.pms.dao.MemberDao">
+  
+  <resultMap type="Member" id="MemberMap">
+    <id column="member_no" property="no"/> 
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="password" property="password"/>
+    <result column="photo" property="photo"/>
+    <result column="tel" property="tel"/>
+    <result column="created_dt" property="registeredDate"/>
+  </resultMap>
+  
+  <select id="findAll" resultMap="MemberMap">
+    select 
+      member_no,
+      name,
+      email,
+      tel,
+      created_dt 
+    from 
+      pms_member 
+    order by 
+      name asc
+  </select>
+  
+  <select id="findByNo" resultMap="MemberMap" parameterType="int">
+    select 
+      member_no,
+      name,
+      email,
+      photo,
+      tel,
+      created_dt 
+    from 
+      pms_member 
+    where 
+      member_no=#{no}
+  </select>
+
+  <insert id="insert" parameterType="member">
+    insert into pms_member(name,email,password,photo,tel) 
+    values(#{name},#{email},password(#{password}),#{photo},#{tel})
+  </insert>
+  
+  <update id="update" parameterType="member">
+    update pms_member set
+      name=#{name},
+      email=#{email},
+      password=password(#{password}),
+      photo=#{photo},
+      tel=#{tel}
+    where 
+      member_no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from pms_member 
+    where member_no=#{value}
+  </delete>
+  
+  <select id="findByEmailAndPassword" resultMap="MemberMap">
+    select 
+      member_no,
+      name,
+      email,
+      photo,
+      tel,
+      created_dt 
+    from 
+      pms_member
+    where 
+      email=#{email} and password=password(#{password})
+  </select>
+  
+  <select id="findByName" resultMap="MemberMap" parameterType="string">
+    select 
+      member_no,
+      name,
+      email,
+      photo,
+      tel,
+      created_dt 
+    from 
+      pms_member
+    where 
+      name=#{value}
+  </select>
+</mapper>
+
+
+
+
+
+
+

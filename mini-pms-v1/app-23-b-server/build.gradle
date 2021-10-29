@@ -1,0 +1,89 @@
+// Gradle 도구에 추가할 작업이 있으면 플러그인을 장착하라!
+plugins {
+    id 'java' 
+    //id 'eclipse'
+    id 'eclipse-wtp' // 이클립스 IDE 용 웹 프로젝트 관련 파일을 만들 때 사용할 도구가 들어 있는 플러그인 장착
+    id 'war' // 웹 애플리케이션의 배포 파일을 만들 때 사용할 도구가 들어 있는 플러그인 장착
+}
+
+tasks.withType(JavaCompile) {
+    // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
+    options.encoding = 'UTF-8' 
+
+    // 소스 파일을 작성할 때 사용할 자바 버전
+    sourceCompatibility = '11'
+
+    // 자바 클래스를 실행시킬 JVM의 최소 버전
+    targetCompatibility = '11'
+}
+
+// 웹 애플리케이션 배포 파일(.war)을 만들 때 사용할 기본 파일 이름을 설정한다.
+// 이 이름은 웹 애플리케이션 context root 경로로도 사용된다.
+war {
+    archiveBaseName = "pms"
+}
+
+// 이클립스 IDE 에서 사용할 값을 설정한다.
+eclipse {
+
+    // 이클립스 IDE로 임포트하는 프로젝트의 이름을 설정한다.
+    project {
+        name = "study-project-server"
+    }
+    
+    // 자바 개발 도구에서 사용할 값을 설정한다.
+    jdt {
+        //if you want to alter the java versions (by default they are configured with gradle java plugin settings):
+        sourceCompatibility = 11
+        targetCompatibility = 11
+        javaRuntimeName = "JavaSE-11"
+    }
+    
+    // 자바 웹 개발 도구에서 사용할 값을 설정한다.
+    wtp {
+        facet {
+            //you can add some extra wtp facets or update existing ones; mandatory keys: 'name', 'version':
+            facet name: 'jst.java', version: '11'
+        }
+//        component {
+            //you can configure the context path:
+            //contextPath = '/pms'
+
+            //you can configure the deployName:
+            //deployName = 'pms'
+//        }
+    }
+}
+
+
+// 프로젝트에서 외부의 라이브러리를 사용한다면
+// 그 라이브러리 파일(.jar)을 다운로드 받을 서버 정보를 설정하라!
+repositories {
+    mavenCentral() // https://repo.maven.apache.org/maven2/ 사이트에서 다운로드 받는다.
+}
+
+// 프로젝트에서 사용하는 라이브러리 정보를 등록한다.
+// => Gradle 을 실행할 때 위에서 설정한 서버에 접속하여 
+//    등록한 라이브러를 자동으로 다운로드 받는다.
+// => 이렇게 다운로드 받은 라이브러리는 컴파일하거나 실행할 때 사용된다.
+dependencies {
+  // 서블릿 API
+  implementation 'javax.servlet:javax.servlet-api:4.0.1'
+  
+  // JSP API
+  implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+  // Google JSON 라이브러리
+  implementation 'com.google.code.gson:gson:2.8.8'
+  
+  // MariaDB JDBC 드라이버
+  implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
+  
+  // Mybatis 퍼시스턴스 프레임워크
+  implementation 'org.mybatis:mybatis:3.5.7'
+  
+  implementation 'com.google.guava:guava:30.1-jre'
+  testImplementation 'junit:junit:4.13.2'
+}
+
+
