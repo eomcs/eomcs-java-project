@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+header {
+	xborder: 1px solid red;
+	xheight: 80px;
+}
+
+footer {
+	xborder: 1px solid blue;
+}
+
+aside {
+	xborder: 1px solid green;
+	float: left;
+	width: 90px;
+	min-height: 300px; 
+}
+
+#content {
+	xborder: 1px dashed yellow;
+	margin-left: 100px; 
+}
