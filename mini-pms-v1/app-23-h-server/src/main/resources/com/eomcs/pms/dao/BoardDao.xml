@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.pms.dao.BoardDao">
+  
+  <resultMap type="Board" id="BoardMap">
+    <id column="board_no" property="no"/> 
+    <result column="title" property="title"/>
+    <result column="content" property="content"/>
+    <result column="created_dt" property="registeredDate"/>
+    <result column="view_cnt" property="viewCount"/>
+    
+    <association property="writer" javaType="member">
+      <id column="member_no" property="no"/>
+      <result column="name" property="name"/>
+      <result column="email" property="email"/>
+    </association>
+  </resultMap>
+  
+  <sql id="select1">
+    select
+      b.board_no,
+      b.title,
+      b.created_dt,
+      b.view_cnt,
+      m.member_no,
+      m.name,
+      m.email
+    from
+      pms_board b
+      inner join pms_member m on b.member_no=m.member_no
+  </sql>
+  
+  <sql id="order1">
+    order by 
+      b.board_no desc
+  </sql>
+  
+  <select id="findAll" resultMap="BoardMap">
+    <include refid="select1"/>
+    <include refid="order1"/>
+  </select>
+     
+  <select id="findByNo" resultMap="BoardMap" parameterType="int">
+    select
+      b.board_no,
+      b.title,
+      b.content,
+      b.created_dt,
+      b.view_cnt,
+      m.member_no,
+      m.name,
+      m.email
+    from
+      pms_board b
+      inner join pms_member m on b.member_no=m.member_no
+    where board_no=#{no}
+  </select>
+  
+  <update id="updateCount" parameterType="int">
+    update pms_board set
+      view_cnt = view_cnt + 1
+    where board_no=#{no}
+  </update>
+
+  <select id="findByKeyword" resultMap="BoardMap" parameterType="string">
+    <include refid="select1"/>
+    where 
+      b.title like(concat('%',#{keyword},'%'))
+      or b.content like (concat('%',#{keyword},'%'))
+      or m.name like (concat('%',#{keyword},'%'))
+    <include refid="order1"/>
+  </select>
+  
+  <insert id="insert" parameterType="board">
+    insert into pms_board(title,content,member_no) 
+    values(#{title},#{content},#{writer.no})
+  </insert>
+  
+  <update id="update" parameterType="board">
+    update pms_board set
+      title=#{title},
+      content=#{content}
+    where 
+      board_no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from pms_board 
+    where board_no=#{no}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
