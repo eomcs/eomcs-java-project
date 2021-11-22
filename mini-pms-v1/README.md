@@ -132,7 +132,8 @@
 
 
 ### 24-a. Spring WebMVC 프레임워크 도입하기 : 프레임워크 적용
-### 24-b. Spring WebMVC 프레임워크 도입하기 : 프레임워크 적용
+### 24-b. Spring WebMVC 프레임워크 도입하기 : Java Config 설정
+### 24-c. Spring WebMVC 프레임워크 도입하기 : 서비스 객체 도입
 
 ### 22-c. 데이터 관리를 DBMS에게 맡기기 : 무결성 제약 조건 및 트랜잭션
 ### 22-d. 데이터 관리를 DBMS에게 맡기기 : 무결성 제약 조건 II
